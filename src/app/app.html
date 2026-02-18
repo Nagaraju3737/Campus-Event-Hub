@@ -1,1 +1,24 @@
 <router-outlet></router-outlet>
+
+<!-- 🔵 AI Campus Assistant (Global Chatbot) -->
+<div class="ai-bot-container">
+  <button class="ai-bot-toggle" (click)="toggleChat()">
+    🤖
+  </button>
+
+  <div class="ai-chat-window" *ngIf="isChatOpen()">
+    <div class="chat-header">
+      <span>AI Campus Assistant</span>
+      <button (click)="toggleChat()">×</button>
+    </div>
+
+    <div class="chat-body">
+      <p>Hello 👋</p>
+      <p>How can I help you with campus events today?</p>
+    </div>
+
+    <div class="chat-footer">
+      <input type="text" placeholder="Type a message...">
+    </div>
+  </div>
+</div>
