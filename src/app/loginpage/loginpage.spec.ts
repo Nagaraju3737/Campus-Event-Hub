@@ -20,12 +20,9 @@ describe('Loginpage', () => {
 
     fixture = TestBed.createComponent(Loginpage);
     component = fixture.componentInstance;
-<<<<<<< HEAD
+
     fixture.detectChanges();   //  ADD THIS
-=======
-    // await fixture.whenStable();
-    fixture.detectChanges();
->>>>>>> main
+
   });
 
   it('should create', () => {
