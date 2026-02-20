@@ -1,3 +1,4 @@
+
 <div class="page">
     <div class="card">
         <div class="icon">
@@ -27,9 +28,8 @@
 
             <label>Role</label>
             <select [(ngModel)]="user.role" name="role">
-                <option value="student">student</option>
+                <option value="student">Student</option>
                 <option value="college_admin">College Admin</option>
-                <option value="super_Admin">Super Admin</option>
             </select>
             <label>Password</label>
             <input type="password"
@@ -45,10 +45,11 @@
                     required>
 
             <button type="submit">Create Account</button>
+            
 
             <p class="link">
                 Already have an account?
-                <a routerLink="/login">Sign in</a>
+                <a routerLink="/login">Signin</a>
             </p>
 
         </form>

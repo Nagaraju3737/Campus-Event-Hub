@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { Loginpage } from './loginpage';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -19,7 +20,12 @@ describe('Loginpage', () => {
 
     fixture = TestBed.createComponent(Loginpage);
     component = fixture.componentInstance;
+<<<<<<< HEAD
     fixture.detectChanges();   //  ADD THIS
+=======
+    // await fixture.whenStable();
+    fixture.detectChanges();
+>>>>>>> main
   });
 
   it('should create', () => {

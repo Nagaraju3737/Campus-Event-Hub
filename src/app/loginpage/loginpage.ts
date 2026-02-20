@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-loginpage',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './loginpage.html',
   styleUrls: ['./loginpage.css']
 })
@@ -17,18 +17,42 @@ export class Loginpage {
   user = {
     email: '',
     password: '',
-    role: 'student' // student | college_admin |super admin
+    role: 'student' // student | college_admin
   };
 
   constructor(
-  private auth: Auth,
-  private router: Router,
-  private http: HttpClient
-  ) {}
+    private auth: Auth,
+    private router: Router,
+    private http: HttpClient
+    ) { }
 
-errorMessage = '';
+    errorMessage = '';
 
-login() {
+  // onRoleChange() {
+  //   // Auto-fill removed as per request
+  //   this.user.email = '';
+  //   this.user.password = '';
+  // }
+
+  // login() {
+    // if (this.user.role === 'super_admin') {
+    //   if (this.user.email === 'super@campus.com' && this.user.password === 'super@123') {
+    //     this.auth.setRole(this.user.role);
+    //     this.router.navigate(['/super-admin-dashboard']);
+    //   } else {
+    //     alert('Invalid Super Admin Credentials');
+    //   }
+    // } else {
+    //   this.auth.setRole(this.user.role);
+
+    //   if (this.user.role === 'college_admin') {
+    //     this.router.navigate(['/admin-dashboard']);
+    //   } else {
+    //     this.router.navigate(['/student-dashboard']);
+    //   }
+    // }
+  // }
+  login() {
 
   this.errorMessage = '';
 
@@ -42,16 +66,32 @@ login() {
         this.auth.setRole(res.user.role);
 
         // Navigate based on role
-        if (res.user.role === 'college_admin') {
-          this.router.navigate(['/admin-dashboard']);
-        } 
-        else if(res.user.role === 'super_Admin') {
-          this.router.navigate(['/super_Admin-dashboard']);
-        }
-        else{
+        // if (res.user.role === 'college_admin') {
+        //   this.router.navigate(['/admin-dashboard']);
+        // } 
+        // else if(res.user.role === 'super_Admin') {
+        //   this.router.navigate(['/super_Admin-dashboard']);
+        // }
+        // else{
           
-          this.router.navigate(['/student-dashboard']);
-        }
+        //   this.router.navigate(['/student-dashboard']);
+        // }
+        if (this.user.role === 'super_admin') {
+          if (this.user.email === 'super@campus.com' && this.user.password === 'super@123') {
+        this.auth.setRole(this.user.role);
+        this.router.navigate(['/super-admin-dashboard']);
+      } else {
+        alert('Invalid Super Admin Credentials');
+      }
+    } else {
+      this.auth.setRole(this.user.role);
+
+      if (this.user.role === 'college_admin') {
+        this.router.navigate(['/admin-dashboard']);
+      } else {
+        this.router.navigate(['/student-dashboard']);
+      }
+    }
         
 
       },
@@ -66,5 +106,4 @@ login() {
       }
     });
 }
-
 }
