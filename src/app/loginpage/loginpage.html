@@ -19,7 +19,7 @@
       </div>
 
       <label>Login As</label>
-      <select [(ngModel)]="user.role" (ngModelChange)="onRoleChange()" name="role">
+      <select [(ngModel)]="user.role"  name="role">   <!---(ngModelChange)="onRoleChange()" -->
         <option value="student">Student</option>
         <option value="college_admin">College Admin</option>
         <option value="super_admin">Super Admin</option>

@@ -28,11 +28,11 @@ export class Loginpage {
 
     errorMessage = '';
 
-  onRoleChange() {
-    // Auto-fill removed as per request
-    this.user.email = '';
-    this.user.password = '';
-  }
+  // onRoleChange() {
+  //   // Auto-fill removed as per request
+  //   this.user.email = '';
+  //   this.user.password = '';
+  // }
 
   // login() {
     // if (this.user.role === 'super_admin') {
