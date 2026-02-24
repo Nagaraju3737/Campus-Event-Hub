@@ -1,24 +1,52 @@
 <router-outlet></router-outlet>
 
-<!-- 🔵 AI Campus Assistant (Global Chatbot) -->
 <div class="ai-bot-container">
-  <button class="ai-bot-toggle" (click)="toggleChat()">
-    🤖
-  </button>
-
   <div class="ai-chat-window" *ngIf="isChatOpen()">
     <div class="chat-header">
-      <span>AI Campus Assistant</span>
-      <button (click)="toggleChat()">×</button>
+      <span>Campus Assistant</span>
+      <div class="chat-header-right">
+        <small class="role-badge">{{ activeRole() }}</small>
+        <button type="button" (click)="toggleChat()">x</button>
+      </div>
     </div>
 
-    <div class="chat-body">
-      <p>Hello 👋</p>
-      <p>How can I help you with campus events today?</p>
+    <div class="chat-body" #chatBody>
+      <p
+        *ngFor="let message of messages()"
+        [class.user]="message.sender === 'user'"
+        [class.bot]="message.sender === 'bot'"
+      >
+        {{ message.text }}
+      </p>
+      <div class="quick-questions">
+        <button
+          type="button"
+          class="quick-question-btn"
+          *ngFor="let item of getVisibleSuggestions()"
+          (click)="askPredefinedQuestion(item)"
+        >
+          {{ item.question }}
+        </button>
+      </div>
     </div>
 
     <div class="chat-footer">
-      <input type="text" placeholder="Type a message...">
+      <input
+        type="text"
+        placeholder="Type a message..."
+        [(ngModel)]="userInput"
+        (keyup.enter)="sendMessage()"
+      />
+      <button type="button" (click)="sendMessage()">Send</button>
     </div>
   </div>
+
+  <button class="ai-bot-toggle" type="button" (click)="toggleChat()" aria-label="Open chatbot">
+    <img
+      class="bot-avatar-img"
+      src="/assets/chatbot_Avatar.png"
+      alt="Chatbot Avatar"
+      aria-hidden="true"
+    />
+  </button>
 </div>
