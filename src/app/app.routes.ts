@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Registerpage } from './registerpage/registerpage';
 import { Loginpage } from './loginpage/loginpage';
 import { Homepage } from './homepage/homepage';
-import { StudentDashboardComponentComponent } from './student-dashboard/student-dashboard';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard';
 import { AdminDashboard } from './admin-dashboard/admin-dashboard';
 import { SuperAdminDashboard } from './super-admin-dashboard/super-admin-dashboard';
 import { SignupSuccessComponent } from './signup-success/signup-success.component';
@@ -19,7 +19,7 @@ export const routes: Routes = [
 
   {
     path: 'student-dashboard',
-    component: StudentDashboardComponentComponent,
+    component: StudentDashboardComponent,
     canActivate: [roleGuard('student')]
   },
 
@@ -33,11 +33,7 @@ export const routes: Routes = [
     path: 'super-admin-dashboard',
     component: SuperAdminDashboard,
     canActivate: [roleGuard('super_admin')]
-  },
- {
-  path: 'student-dashboard',
-  component: StudentDashboardComponent
-}
+  }
 ];
 
 
